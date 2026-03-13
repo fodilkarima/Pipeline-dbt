@@ -44,18 +44,59 @@ Tables analytiques finales.
 Exemple :
 - marts_etudiant_population
 
----
+## Tests de qualité des données
+
+Les tests implémentés dans ce projet :
+
+### not_null
+Vérifie que la colonne `user_id` n'est jamais vide.
+
+### accepted_values
+Vérifie que la colonne `gender` ne contient que :
+
+- F
+- M
+- unknown
+
+### Test personnalisé
+
+Le test `unique_user_year.sql` vérifie que la combinaison suivante est unique :
+
+(user_id, year_path_started)
+
+Cela garantit qu'un étudiant apparaît au maximum une fois par année.
 
 # Structure du projet
 
+Pipeline-dbt
+│
+├── models
+│ ├── staging
+│ ├── intermediate
+│ └── marts
+│
+├── tests
+│ └── unique_user_year.sql
+│
+├── dbt_project.yml
+└── README.md
 
-Try running the following commands:
+# Exécution du pipeline
 - dbt run
 - dbt test
 
-Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/overview)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](http://slack.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+Construire le pipeline :
+dbt build
+
+Technologies utilisées
+dbt
+Snowflake
+SQL
+GitHub
+
+Auteur
+
+Projet réalisé par Fodil Karima
+
+
+

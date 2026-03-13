@@ -86,13 +86,13 @@ Pipeline-dbt
 - dbt test
 
 Construire le pipeline :
-dbt build
+- dbt build
 
 Technologies utilisées
-dbt
-Snowflake
-SQL
-GitHub
+- dbt
+- Snowflake
+- SQL
+- GitHub
 
 Auteur
 

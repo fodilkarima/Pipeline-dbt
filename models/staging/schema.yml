@@ -1,0 +1,17 @@
+version: 2
+models:
+  - name: stg_etudiant
+    description: Modèle de staging contenant les données nettoyées des étudiants
+
+    columns: 
+      - name: user_id
+        description: Identifiant pseudonymisé de l'étudiant. Peut apparaître plusieurs fois selon l'année ou la formation.
+        data_tests:
+          - not_null  # Vérifie que l'identifiant n'est jamais vide
+
+      - name: gender
+        description: Genre de l'étudiant
+        tests:
+          - accepted_values:
+              arguments: 
+                values: ['F','M','unknown'] # Vérifie que seules ces valeurs sont possibles

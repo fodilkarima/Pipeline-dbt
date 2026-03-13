@@ -1,10 +1,15 @@
 {{ config(materialized='view') }}
-
+-- Ce modèle transforme les données de population 2022
+-- Il convertit les colonnes d'âges en lignes (unpivot)
+-- puis enrichit et regroupe les catégories d'âge
 with base as (
+     -- Sélection des données provenant du modèle de staging
     select *
     from {{ ref('stg_population_2022') }}
 ),
 unpivoted as (
+        -- Transformation des colonnes d'âges en lignes
+    -- Chaque tranche d'âge devient une ligne avec sa population
     select
         region,
         age_code,
@@ -25,34 +30,44 @@ unpivoted as (
     )
 ),
 enriched as (
+     -- Enrichissement des données
+    -- Extraction du genre et du groupe d'âge depuis age_code
 select 
    region,
+    -- Extraction du genre (M ou F)
     split_part(age_code, '_', 1) as gender,
+      -- Extraction du groupe d'âge
     substr(age_code, position('_' in age_code) + 1) as age_group,
     population_raw as estimation_population,
     year_path_started
 from unpivoted
+  -- Suppression des lignes non pertinentes
 where region is not null
   and region not in ('Année 2022', 'Régions')),
 
 labeled as (
+       -- Regroupement des tranches d'âge
+    -- Toutes les personnes de 60 ans et plus sont regroupées
   select
     region,
     gender,
     case
         when age_group in ('60_64','65_69','70_74','75_79','80_84','85_89','90_94','95_PLUS')
             then '60 ans ou plus'
+             -- Transformation du format d'âge : 20_24 → 20-24 ans
         else replace(age_group, '_', '-') || ' ans'
     end as age_group,
     estimation_population,
     year_path_started
 from enriched)
-
+-- Agrégation finale de la population par région, genre et tranche d'âge
 select
     region,
     gender,
     age_group,
+     -- Somme de la population estimée
     sum(estimation_population) as estimation_population,
     year_path_started
 from labeled
+-- Agrégation finale
 group by region, gender, age_group,year_path_started

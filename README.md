@@ -85,16 +85,16 @@ Pipeline-dbt
 - dbt run
 - dbt test
 
-Construire le pipeline :
+# Construire le pipeline :
 - dbt build
 
-Technologies utilisées
+# Technologies utilisées
 - dbt
 - Snowflake
 - SQL
 - GitHub
 
-Auteur
+# Auteur
 
 Projet réalisé par Fodil Karima
 

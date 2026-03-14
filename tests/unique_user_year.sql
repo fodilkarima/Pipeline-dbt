@@ -1,5 +1,4 @@
--- Test de qualité des données
--- Vérifie que chaque étudiant apparaît au maximum une fois par année
+-- Test d’unicité des identifiants étudiant par année
 -- La combinaison (user_id, year_path_started) doit être unique
 select
     user_id,

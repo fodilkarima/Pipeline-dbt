@@ -81,6 +81,10 @@ Pipeline-dbt
 ├── dbt_project.yml
 └── README.md
 
+## Lineage du pipeline
+
+![Pipeline dbt](docs/pipeline_lineage.png)
+
 # Exécution du pipeline
 - dbt run
 - dbt test

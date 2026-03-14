@@ -83,7 +83,8 @@ Pipeline-dbt
 
 ## Lineage du pipeline
 
-![Pipeline dbt](docs/pipeline_lineage.png)
+![Pipeline dbt](docs/Lineage%20pipeline%20dbt.PNG)
+
 
 # Exécution du pipeline
 - dbt run

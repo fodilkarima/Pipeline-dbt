@@ -66,6 +66,11 @@ Le test `unique_user_year.sql` vérifie que la combinaison suivante est unique :
 
 Cela garantit qu'un étudiant apparaît au maximum une fois par année.
 
+Le test `age_group_autorise.sql` vérifie que toutes les valeurs de age_group appartiennent à la nomenclature attendue des tranches d'âge
+
+Cela garantie la cohérence des données et la fiabilité des analyses
+
+
 # Structure du projet
 
 Pipeline-dbt

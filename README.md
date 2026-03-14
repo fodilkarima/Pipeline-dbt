@@ -53,10 +53,16 @@ Vérifie que la colonne `user_id` n'est jamais vide.
 
 ### accepted_values
 Vérifie que la colonne `gender` ne contient que :
-
 - F
 - M
 - unknown
+
+### accepted_values
+Vérifie que la colonne `year_path_started` ne contient que :
+- 2022
+- 2023
+- 2024
+- 2025
 
 ### Test personnalisé
 

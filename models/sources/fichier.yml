@@ -1,0 +1,23 @@
+version: 2
+sources:
+  - name: ecommerce
+    description: Source contenant les données brutes utilisées dans le pipeline.
+     
+    schema : raw
+    tables:
+      - name: orders
+        description: Table contenant les données des étudiants inscrits aux parcours Data
+      
+      - name: population_2022
+        description: Table contenant les estimations de population par région, genre
+                     et tranche d'âge pour l'année 2022, issues des données publiques de l'INSEE
+      - name: population_2023
+        description: Table contenant les estimations de population par région, genre
+                     et tranche d'âge pour l'année 2023, issues des données publiques de l'INSEE
+      - name: population_2024
+        description: Table contenant les estimations de population par région, genre
+                     et tranche d'âge pour l'année 2024, issues des données publiques de l'INSEE
+      - name: population_2025
+        description: Table contenant les estimations de population par région, genre
+                     et tranche d'âge pour l'année 2025, issues des données publiques de l'INSEE
+    
